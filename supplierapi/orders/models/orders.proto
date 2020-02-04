@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+// Last Id:25
+
+package orders;
+
+message Order {
+  string fulfilment_order_id = 1;
+  string customer_order_id = 2;
+  string created_at = 3;
+  repeated Unit units = 4;
+  Shipment_address shipment_address = 16;
+}
+
+message Shipment_address {
+  string title = 5;
+  string first_name = 6;
+  string last_name = 7;
+  string company_name = 8;
+  string street = 9;
+  string house_number = 10;
+  string city = 11;
+  string country = 12;
+  string phone = 13;
+  string shipping_details =14;
+  string email = 15;
+}
+
+message Unit {
+  float freight_costs = 16;
+  bool is_cancelled = 17;
+  string sku = 18;
+  float price = 19;
+  string delivery_time_expires = 20;
+  Shipment_data shipment_data = 21;
+  string customer_order_unit_status = 22;
+}
+
+message Shipment_data {
+  string carrier = 23;
+  string tracking_number = 24;
+  string created_at =25;
+}
