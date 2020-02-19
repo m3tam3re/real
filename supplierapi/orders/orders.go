@@ -33,7 +33,7 @@ func GetOpen() ([]Order, error) {
 func (o *Order) Confirm() error {
 	const op errors.Op = "orders.go|method Confirm()"
 
-	endpoint := "/orders/{id}/confirm" + strconv.Itoa(int(o.FulfilmentOrderId)) + "/confirm"
+	endpoint := "/orders/" + strconv.Itoa(int(o.FulfilmentOrderId)) + "/confirm"
 	resp, err := supplierapi.StartRequest("POST", endpoint, nil)
 	defer resp.Body.Close()
 	if err != nil {
