@@ -9,7 +9,6 @@ func TestGetOpen(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	for _, order := range orders {
-		t.Log(order)
-	}
+	t.Log(orders)
+	//TODO add tests
 }

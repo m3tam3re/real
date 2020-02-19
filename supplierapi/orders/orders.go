@@ -6,6 +6,7 @@ import (
 	"github.com/m3tam3re/errors"
 	"github.com/m3tam3re/real/supplierapi"
 	"io/ioutil"
+	"strconv"
 )
 
 const path errors.Path = "github.com/m3tam3re/real/supplierapi/orders"
@@ -13,8 +14,8 @@ const path errors.Path = "github.com/m3tam3re/real/supplierapi/orders"
 func GetOpen() ([]Order, error) {
 	const op errors.Op = "orders.go|func GetOpen()"
 
-	//endpoint := "orders?open=true"
-	endpoint := "orders?limit=100&page=1"
+	endpoint := "orders?open=true"
+	//endpoint := "orders?limit=100&page=1"
 	resp, err := supplierapi.StartRequest("GET", endpoint, nil)
 	defer resp.Body.Close()
 	if err != nil {
@@ -32,7 +33,7 @@ func GetOpen() ([]Order, error) {
 func (o *Order) Confirm() error {
 	const op errors.Op = "orders.go|method Confirm()"
 
-	endpoint := "/orders/{id}/confirm" + o.FulfilmentOrderId + "/confirm"
+	endpoint := "/orders/{id}/confirm" + strconv.Itoa(int(o.FulfilmentOrderId)) + "/confirm"
 	resp, err := supplierapi.StartRequest("POST", endpoint, nil)
 	defer resp.Body.Close()
 	if err != nil {
