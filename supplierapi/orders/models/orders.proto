@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package orders;
 
-message Order {
+message rOrder {
   int32 fulfilment_order_id = 1;
   string customer_order_id = 2;
   string created_at = 3;
@@ -17,6 +17,7 @@ message Shipment_address {
   string company_name = 4;
   string street = 5;
   string house_number = 6;
+  string zip = 12;
   string city = 7;
   string country = 8;
   string phone = 9;
