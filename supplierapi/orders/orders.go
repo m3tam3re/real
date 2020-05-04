@@ -76,6 +76,9 @@ func (o *ROrder) Send() error {
 		if err != nil {
 			return errors.E(errors.Internal, path, op, err, "error executing request")
 		}
+		if resp.StatusCode != 204 {
+			return errors.E(errors.Internal, path, op, fmt.Sprintf("statuscode should be 204, got %v", resp.StatusCode))
+		}
 	}
 	return nil
 }
