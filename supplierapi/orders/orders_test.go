@@ -12,3 +12,12 @@ func TestGetOpen(t *testing.T) {
 	t.Log(orders)
 	//TODO add tests
 }
+
+func TestGetOrder(t *testing.T) {
+	order, err := GetOrder("6025488")
+	if err != nil {
+		t.Error(err)
+	}
+	order.Send()
+	t.Log(order)
+}
