@@ -69,7 +69,7 @@ func (o *ROrder) Confirm() error {
 func (o *ROrder) Send() error {
 	const op errors.Op = "orders.go|method Send()"
 	for _, u := range o.Units {
-		endpoint := "/order-units/" + strconv.Itoa(int(u.IdOrderUnit)) + "/send"
+		endpoint := "order-units/" + strconv.Itoa(int(u.IdOrderUnit)) + "/send"
 		body, _ := json.Marshal(u.ShipmentData)
 		resp, err := supplierapi.StartRequest("POST", endpoint, body)
 		time.Sleep(time.Second * 1)
